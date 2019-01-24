@@ -1566,6 +1566,7 @@
             }
 
         });
+        
         function js_dd_mm_yyyy() {
             var now = new Date();
             var year = "" + now.getFullYear();
@@ -1576,28 +1577,9 @@
             var second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
             return day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
         }
-        function eliminarImagen() {
-            debugger
-
-            //var a = $event.currentTarget;
-            //var b = angular.element(a).parent();
-
-             //$('.js-remove-slide').on('click', function () {
-                    //$('.slider-info').slick('slickRemove', slideIndex - 1);
-                    //if (slideIndex !== 0) {
-                    //    slideIndex--;
-                    //}
-             //});
-            
-                //e.add.slides.length <= 1 || (e.add.slides.splice(-1, 1), e.addIndex--)
-            
-
-            console.log("paso evento eliminar");
+        
+        function eliminarImagen(image) {
+           scope.images.splice(scope.images.indexOf(image), 1);
         }
-        
-   
-        
-
     }
-
 })(); 
