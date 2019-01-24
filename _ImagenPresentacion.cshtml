@@ -1,0 +1,234 @@
+﻿<style type="text/css">
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .slick-dotted.slick-slider {
+        margin-bottom: 30px;
+        border: groove;
+    
+    }
+    /****************************************************/
+    .carousel-item {
+        margin: 10px 30px 10px 30px;
+    }
+    .carousel-prev:hover, .carousel-prev:focus, .carousel-next:hover, .carousel-next:focus {
+        color: transparent;
+        outline: none;
+        background: transparent;
+    }
+
+    .carousel-prev {
+        left: 5px;
+    }
+    .carousel-next {
+        right: 18px;
+    }
+    .carousel-prev, .carousel-next {
+        font-size: x-large;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        cursor: pointer;
+        /*color: transparent;*/
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+
+        .carousel-prev:hover:before, .carousel-prev:focus:before, .carousel-next:hover:before, .carousel-next:focus:before {
+            opacity: 1;
+        }
+
+        /*.carousel-prev:before {
+            content: "\f1f8";
+        }*/
+
+        .carousel-prev:before, .carousel-next:before {
+            font-size: xx-large;
+            line-height: 1;
+            opacity: .75;
+            color: aliceblue;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /*.carousel-next:before {
+            content: '→';
+        }*/
+
+        .carousel-prev:before, .carousel-next:before {
+            /*font-family: 'slick';*/
+            font-size: 20px;
+            line-height: 1;
+            opacity: .75;
+            color: #e81010;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    /* Dots */
+    .carousel-dots.slick-slider {
+        margin-bottom: 30px;
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: -25px;
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+    }
+
+    .carousel-dots li {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+    }
+
+        .carousel-dots li button {
+            font-size: 0;
+            line-height: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            padding: 5px;
+            cursor: pointer;
+            color: transparent;
+            border: 0;
+            outline: none;
+            background: transparent;
+        }
+
+            .carousel-dots li button:hover,
+            .carousel-dots li button:focus {
+                outline: none;
+            }
+
+                .carousel-dots li button:hover:before,
+                .carousel-dots li button:focus:before {
+                    opacity: 1;
+                }
+
+            .carousel-dots li button:before {
+                /*font-family: 'slick';*/
+                font-size: 66px;
+                line-height: 20px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                content: '•';
+                text-align: center;
+                opacity: .25;
+                color: #3498db;
+
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+        .carousel-dots li.slick-active button:before {
+            opacity: .75;
+            color: black;
+        }
+
+</style>
+
+<div class="box box-info">
+    <div class="box-header">
+        <a class="accordion-toggle-right collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <h3 class="box-title-black">Imagen de presentación</h3>
+        </a>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+        <div class="box-body">
+            <div class="form-group">
+                <!--*****AGREGAR IMAGEN**************-->
+                <div class="col-xs-12 col-sm-6">
+                    <input type="file" id="imagenInforme" accept=".jpg, .jpeg, .png"
+                           style="display: inline; margin-left: 5px; width: 100%; border:1px solid #eee;"
+                           ng-show="!ctr.informe.permiteAprobarInforme" />
+                    @*<span ng-show="ctr.images.length == 0 && ctr.informe.permiteAprobarInforme">
+                    Imagen de presentación no registrada.
+            </span>*@
+                </div>
+
+                <span class="box-tools inline pull-left">
+                    <button type="button" class="btn btn-sm btn-primary"
+                            ng-click="ctr.agregarImagen()"
+                            @*ng-show="ctr.informe.permiteGuardarInforme"*@>
+                        <i class="fa fa-plus-circle"></i> Agregar
+                    </button>
+                </span>
+                <!--*****FIN AGREGAR IMAGEN**************-->
+                <!--*****CARRUSEL**************-->
+
+                <h2 class="title">Fotos</h2>
+                @*<div ng-if="!ctr.images">*@
+                    <ui-carousel class="slider  slick-slider slick-dotted" slides="ctr.images" slides-to-show="5" slides-to-scroll="1" initial-slide="1" autoplay="true" autoplay-speed="2000" dots="true">
+
+                        <carousel-item style="margin: 10px 30px 10px 30px;">
+
+                            <img ng-src={{item.ValUrlAvatar_ImageMin}} />
+                            <div style="text-align:center">
+                                <span style="cursor:pointer; color:#3498db;font-size:larger " ng-click="ctr.eliminarImagen()"><i class="fa fa-trash-o"></i></span>
+                                <button type="button" class="btn btn-sm btn-primary"
+                                        ng-click="ctr.eliminar()">
+                                    <i class="fa fa-plus-circle"></i> Agregar
+                                </button>
+                            </div>
+
+                        </carousel-item>
+                        <!-- For customize carousel next, previous button -->
+                        <carousel-prev>
+                            <!-- placed your previous button here -->
+                            @*<button class=" slick-prev slick-arrow"> <i class="fa fa-plus-circle"></i>Prev</button>*@
+                            <span style="cursor:pointer; color:#3498db " class="slick-arrow"><i class="fa fa-chevron-circle-left"></i></span>
+                            <!-- end -->
+                        </carousel-prev>
+
+                        <carousel-next>
+                            <!-- placed your next button here -->
+                            @*<button class="slick-next slick-arrow">Next</button>*@
+                            <span style="cursor:pointer; color:#3498db "><i class="fa fa-chevron-circle-right"></i></span>
+                            <!-- end -->
+                        </carousel-next>
+
+                    </ui-carousel>
+                    <pre>{{ctr.autoplay.slides}}</pre>
+                    <pre>{{ctr.images}}</pre>
+                @*</div>*@
+                @*<pre><code class="language-html" prism="">{{ ctr.autoplay.source }}</code></pre>*@
+
+
+            </div>
+
+
+        </div>
+       
+    </div>
+</div>
+
